@@ -24,16 +24,20 @@ public:
     string Designation ;
     int salary ; 
 
-    Employee ()
-    {
-        cout << "Default Constructor is called - " << endl;
+    // Employee ()
+    // {
+    //     cout << "Default Constructor is called - " << endl;
 
-    }
+    // }
     // void printInfo () {
 
     //     cout << "Name - " << "PRINTING EMPLOYEE" << endl;
         
     // }
+
+// Getter & Setter
+
+
 
 private:
        string marritalStatus ; // Not inherited 
@@ -52,10 +56,16 @@ void setMarStatusBonus (string status, int bonus )
 public:
     void printInfo () {
 
-        cout << "Marital Status-->  "   << marritalStatus << endl;
+        cout << "Marital Status - " << marritalStatus<< endl;
+        cout << "Performance  Bonus - " << performanceBonus<< endl;
+
         
     }
-
+public:
+    int getBonus ()
+    {
+        return performanceBonus;
+    }
 
 
 };
@@ -126,7 +136,8 @@ public:
 class TAssistant : public Employee, public Human{
 
 
-
+// Employee --> printInfo
+// Human --> printInfo
 
 
 // performanceBonus but Protected 
@@ -135,7 +146,9 @@ class TAssistant : public Employee, public Human{
 public:
    void printInfo () {
 
-cout << "GG" << endl;        
+
+    Human :: printInfo ();
+
     }
 
 
@@ -146,15 +159,31 @@ cout << "GG" << endl;
 int main () {
   
 Employee employee1;
+
+
+
+// SET 
 employee1.setMarStatusBonus("Married", 100);
 
 employee1.printInfo();
-// employee1.Name ="Hossain" ;
+
+
+//GET and manipulation 
+int empBonus = employee1.getBonus()+100;
+
+cout <<   empBonus+100 << endl;
+
+// Set manipulated variable
+employee1.setMarStatusBonus("Married", empBonus);
+employee1.printInfo();
+
+
+
 
 // employee1.printInfo(); 
 
 // TAssistant ta;
-
+// ta.printInfo();
 // int x = 19;
 // employee1.Designation;
 //gloab changed
