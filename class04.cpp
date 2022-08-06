@@ -1,15 +1,19 @@
 #include <iostream>
 
 using namespace std ;
+//LECTURE 3
 
 // scope resolution operator DONE 
 // multiple Inheritance DONE 
-// Multilevel Inheritance  DONE  AMBIGUITY PROBLEM
+// Multilevel Inheritance  DONE  
 // Protected  DONE 
 // heirarchy inheritance DONE 
 
+//LECTURE 4
 
-// CONSTRUCTOR DESTRUCTOR 
+//AMBIGUITY PROBLEM with inheritance
+// Setter & GETTER 
+// CONSTRUCTOR  
 
 int x = 10 ;
 
@@ -20,11 +24,39 @@ public:
     string Designation ;
     int salary ; 
 
+    Employee ()
+    {
+        cout << "Default Constructor is called - " << endl;
+
+    }
+    // void printInfo () {
+
+    //     cout << "Name - " << "PRINTING EMPLOYEE" << endl;
+        
+    // }
+
 private:
        string marritalStatus ; // Not inherited 
-
 protected:
     int performanceBonus ;
+
+public:
+void setMarStatusBonus (string status, int bonus )
+{
+    marritalStatus = status;
+    performanceBonus = bonus;
+
+}
+
+
+public:
+    void printInfo () {
+
+        cout << "Marital Status-->  "   << marritalStatus << endl;
+        
+    }
+
+
 
 };
 
@@ -63,12 +95,12 @@ class Human : public Mammal{
 
 
  
+public:
+    void printInfo () {
 
-    // void printInfo () {
-
-    //     cout << "Name - " << name << endl;
+        cout << "Name - " << "PRINTING HUMAN" << endl;
         
-    // }
+    }
 
 
 };
@@ -95,10 +127,16 @@ class TAssistant : public Employee, public Human{
 
 
 
+
+
 // performanceBonus but Protected 
 
 // Encapsulation & Abstraction (Getter & Setter Method)
+public:
+   void printInfo () {
 
+cout << "GG" << endl;        
+    }
 
 
 
@@ -108,27 +146,32 @@ class TAssistant : public Employee, public Human{
 int main () {
   
 Employee employee1;
+employee1.setMarStatusBonus("Married", 100);
 
+employee1.printInfo();
 // employee1.Name ="Hossain" ;
 
 // employee1.printInfo(); 
 
-TAssistant ta;
+// TAssistant ta;
 
-int x = 19;
+// int x = 19;
 // employee1.Designation;
-:: x = 100 ; //gloab changed
+//gloab changed
 
-cout << :: x << endl ;
+// cout << :: x << endl ;
 
 // ta.name = "Hossain" ;
 // ta.salary = 100000000;
 
 // ta.printInfo();
 
-Human hum;
+// Human hum;
 
-hum.warmBlood;
+// hum.warmBlood;
+
+
+// ta.printInfo();
 
 return 0;
 } 
