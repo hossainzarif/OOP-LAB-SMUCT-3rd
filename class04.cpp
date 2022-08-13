@@ -11,34 +11,127 @@ using namespace std ;
 
 //LECTURE 4
 
-//AMBIGUITY PROBLEM with inheritance
-// Setter & GETTER 
-// CONSTRUCTOR  
+//AMBIGUITY PROBLEM with inheritance DONE 
+// Setter & GETTER  DONE 
+
+
+//LECTURE 5
+// CONSTRUCTOR  & Destructor 
+
+
+  // Employee ( string name , string Designation, int salary)
+    // {
+    //     this-> name = name ;
+    //     this->Designation = Designation;
+    //     this->salary = salary;
+
+
+    // }
+
+
+    // Employee ( Employee & obj)
+    // {
+    //     this-> name = obj.name ;
+    //     this->Designation = obj.Designation;
+    //     this->salary = obj.salary;
+
+
+    // }
+
+
+
 
 int x = 10 ;
 
+class Animal {
+
+    public: 
+        string name ;
+        int age ;
+};
+
+class Mammal : public Animal {
+       //name <---
+    public:
+        bool warmBlood; // True or False
+    private:
+       string scientificName ;
+
+    private:
+        bool endangered ; // True or False
+};
+
+class Human : public Mammal{
+
+       //name <---
+
+ 
+public:
+    void printInfo () {
+
+        cout << "Name - " << "PRINTING HUMAN" << endl;
+        
+    }
 
 
-class Employee {
+};
+
+
+
+
+class Employee: public Human {
+           //name <---
+
 public:
     string Designation ;
     int salary ; 
 
-    // Employee ()
-    // {
-    //     cout << "Default Constructor is called - " << endl;
+//Example of Default Constructor
+    Employee ()
+    {
+       cout << "Default Constructor CALLED" << endl;
+       name = "ALICE";
+       Designation = "STUDENT";
+       salary = 0;
+    }
 
-    // }
-    // void printInfo () {
-
-    //     cout << "Name - " << "PRINTING EMPLOYEE" << endl;
-        
-    // }
-
-// Getter & Setter
+//This
 
 
+Employee (string name, string Designation, int salary)
+{
+           cout << "Parameterized Constructor CALLED" << endl;
 
+       this->name = name;
+        this-> Designation = Designation;
+       this-> salary = salary;
+}
+
+
+  Employee ( Employee & obj)
+    {
+     cout << "COPY Constructor CALLED" << endl;
+
+        this-> name = obj.name ;
+        this->Designation = obj.Designation;
+        this->salary = obj.salary;
+
+
+    }
+
+
+
+
+
+    void printInfo () {
+
+        cout << "Name   - " << name << endl;
+
+        cout << "Designation  - " << Designation << endl;
+
+        cout << "Salary  - " << salary << endl;
+
+    }
 private:
        string marritalStatus ; // Not inherited 
 protected:
@@ -52,15 +145,6 @@ void setMarStatusBonus (string status, int bonus )
 
 }
 
-
-public:
-    void printInfo () {
-
-        cout << "Marital Status - " << marritalStatus<< endl;
-        cout << "Performance  Bonus - " << performanceBonus<< endl;
-
-        
-    }
 public:
     int getBonus ()
     {
@@ -76,44 +160,15 @@ public:
 
 
 
-class Animal {
-
-    public: 
-        string name ;
-        int age ;
 
 
 
-};
-
-class Mammal : public Animal {
-    public:
-        bool warmBlood; // True or False
-    private:
-       string scientificName ;
-
-    private:
-        bool endangered ; // True or False
-    
-};
 
 
 
 // SOLID
 
-class Human : public Mammal{
 
-
- 
-public:
-    void printInfo () {
-
-        cout << "Name - " << "PRINTING HUMAN" << endl;
-        
-    }
-
-
-};
 
 
 // ??????? Performancebonus
@@ -133,49 +188,59 @@ public:
 // -- TAssistant -- Employee + Human 
 
 // Multiple Inheritance 
-class TAssistant : public Employee, public Human{
+// class TAssistant : public Employee, public Human{
 
 
-// Employee --> printInfo
-// Human --> printInfo
+// // Employee --> printInfo
+// // Human --> printInfo
 
 
-// performanceBonus but Protected 
+// // performanceBonus but Protected 
 
-// Encapsulation & Abstraction (Getter & Setter Method)
-public:
-   void printInfo () {
-
-
-    Human :: printInfo ();
-
-    }
+// // Encapsulation & Abstraction (Getter & Setter Method)
+// public:
+//    void printInfo () {
 
 
+//     Human :: printInfo ();
 
-};
+//     }
+
+
+
+// };
 
 
 int main () {
   
-Employee employee1;
+Employee employee1, employee2("MIKE", "LECTURER",130230), employee3("JANE","CA",31278373);
 
 
+// employee1.printInfo();
+// employee2.printInfo();
+// employee3.printInfo();
 
-// SET 
-employee1.setMarStatusBonus("Married", 100);
+Employee employee4 = employee1; //Copy contructor calling
+employee4.printInfo();
 
-employee1.printInfo();
+// employee1.printInfo();
 
 
-//GET and manipulation 
-int empBonus = employee1.getBonus()+100;
+// // SET 
+//employee1.setMarStatusBonus("Married", 100);
 
-cout <<   empBonus+100 << endl;
 
-// Set manipulated variable
-employee1.setMarStatusBonus("Married", empBonus);
-employee1.printInfo();
+// employee1.printInfo();
+
+
+// //GET and manipulation 
+// int empBonus = employee1.getBonus()+100;
+
+// cout <<   empBonus+100 << endl;
+
+// // Set manipulated variable
+// employee1.setMarStatusBonus("Married", empBonus);
+// employee1.printInfo();
 
 
 
