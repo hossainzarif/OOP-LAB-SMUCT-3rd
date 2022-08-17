@@ -66,10 +66,11 @@ class Human : public Mammal{
        //name <---
 
  
+
 public:
     void printInfo () {
 
-        cout << "Name - " << "PRINTING HUMAN" << endl;
+        cout << "Name - " << "PRINTING MAMMAL" << endl;
         
     }
 
@@ -220,8 +221,8 @@ Employee employee1, employee2("MIKE", "LECTURER",130230), employee3("JANE","CA",
 // employee2.printInfo();
 // employee3.printInfo();
 
-Employee employee4 = employee1; //Copy contructor calling
-employee4.printInfo();
+// Employee employee4 = employee1; //Copy contructor calling
+// employee4.printInfo();
 
 // employee1.printInfo();
 
